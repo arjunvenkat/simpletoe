@@ -4,6 +4,7 @@ class Game < ActiveRecord::Base
   has_many :boxes
 
   def check_win
+    boxes = self.boxes.sort
     if [boxes[0].status, boxes[1].status, boxes[2].status].all_equal_and_present?
       return boxes[0].status
     elsif [boxes[3].status, boxes[4].status, boxes[5].status].all_equal_and_present?
