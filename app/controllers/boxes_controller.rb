@@ -83,12 +83,11 @@ class BoxesController < ApplicationController
 
   def set_status
     box = Box.find(params[:id])
-    if params[:status] == 'nil'
-      box.status = nil
-    else
-      box.status = params[:status]
-    end
+    game = box.game
+    box.status = params[:status]
     box.save
+    game.move_counter += 1
+    game.save
     redirect_to box.game
   end
 end

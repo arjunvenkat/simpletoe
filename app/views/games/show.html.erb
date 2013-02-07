@@ -23,11 +23,15 @@
 
       <td id="cell<%= n %>">
         <% if box.status == nil %>
-          <%= link_to(image_tag('white_box.jpg', :size => '50x50'), set_status_box_path(box.id, 'x')) %>
+          <% if @game.move_counter.even? %>
+            <%= link_to(image_tag('white_box.jpg', :size => '50x50'), set_status_box_path(box.id, 'x')) %>
+          <% else %>
+            <%= link_to(image_tag('white_box.jpg', :size => '50x50'), set_status_box_path(box.id, 'o')) %>
+          <% end %>
         <% elsif box.status == 'x' %>
-          <%= link_to(image_tag('x.jpeg', :size => '50x50' ), set_status_box_path(box.id, 'o'))  %>
+          <%= image_tag('x.jpeg', :size => '50x50') %>
         <% else %>
-          <%= link_to(image_tag('o.png', :size => '50x50' ), set_status_box_path(box.id, 'nil')) %>
+          <%= image_tag('o.png', :size => '50x50') %>
         <% end %>
       </td>
       <% n +=1  %>
