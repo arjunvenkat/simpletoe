@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<div id='game-instructions'>
+  <% if @check_win %>
+    <h2 id='game-outcome'>
+      <%= "#{@check_win.capitalize} Wins!"  if @check_win %>
+    </h2>
+  <% else %>
+    <h2>Click on a square to start playing</h2>
+  <% end %>
+    <%= link_to 'Reset Game', reset_game_path(@game.id) %>
+</div>
+
+
+
+<% rows = 3 %>
+<table id="tic-tac-toe-board">
+<% n = 1 %>
+<% rows.times do %>
+  <tr>
+    <% rows.times do %>
+      <% box = @boxes[n-1] %>
+
+      <td id="cell<%= n %>">
+        <% if box.status == nil %>
+          <%= link_to(image_tag('white_box.jpg', :size => '50x50'), set_status_box_path(box.id, 'x')) %>
+        <% elsif box.status == 'x' %>
+          <%= link_to(image_tag('x.jpeg', :size => '50x50' ), set_status_box_path(box.id, 'o'))  %>
+        <% else %>
+          <%= link_to(image_tag('o.png', :size => '50x50' ), set_status_box_path(box.id, 'nil')) %>
+        <% end %>
+      </td>
+      <% n +=1  %>
+    <% end %>
+  </tr>
+<% end  %>
+</table>
+
+
+<%= link_to 'Edit', edit_game_path(@game) %> |
+<%= link_to 'Back', games_path %>

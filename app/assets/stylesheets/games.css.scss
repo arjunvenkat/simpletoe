@@ -1,0 +1,35 @@
+// Place all the styles related to the games controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#game-instructions {
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 50px;
+  width: 350px;
+}
+
+#game-outcome {
+  color: red;
+}
+
+
+td#cell1, td#cell2, td#cell3, td#cell4, td#cell5, td#cell6 {
+  border-bottom: 3px solid black;
+}
+
+td#cell1, td#cell2, td#cell4, td#cell5, td#cell7, td#cell8 {
+  border-right: 3px solid black;
+}
+
+#tic-tac-toe-board {
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+  height: 200px;
+}
+
+td {
+  font-size: 40px;
+}
