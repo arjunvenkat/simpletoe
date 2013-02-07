@@ -53,7 +53,7 @@ class GamesController < ApplicationController
           9.times do
           b = Box.create(:name => "Game #{@game.id} box",
                           :game_id => @game.id,
-                          :status => 'blank')
+                          :status => nil)
         end
         format.html { redirect_to @game, notice: 'Game was successfully created.' }
         format.json { render json: @game, status: :created, location: @game }
