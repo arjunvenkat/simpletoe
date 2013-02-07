@@ -14,7 +14,7 @@ class GamesController < ApplicationController
   # GET /games/1.json
   def show
     @game = Game.find(params[:id])
-    @boxes = @game.boxes
+    @boxes = @game.boxes.sort
 
     @check_win = @game.check_win
 
