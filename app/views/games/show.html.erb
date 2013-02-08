@@ -1,9 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <div id='game-instructions'>
-  <% if @check_win %>
+  <% if @check_win == 'cats_game' %>
+    <h2 id='game-outcome'>Cat's game! (=^･^=)</h2>
+  <% elsif @check_win %>
     <h2 id='game-outcome'>
-      <%= "#{@check_win.capitalize} Wins!"  if @check_win %>
+      <%= "#{@check_win.capitalize} Wins!" %>
     </h2>
   <% else %>
     <h2>Click on a square to start playing</h2>

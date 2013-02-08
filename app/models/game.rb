@@ -5,25 +5,25 @@ class Game < ActiveRecord::Base
   has_many :boxes
 
   def check_win
-    boxes = self.boxes.sort
-    if [boxes[0].status, boxes[1].status, boxes[2].status].all_equal_and_present?
-      return boxes[0].status
-    elsif [boxes[3].status, boxes[4].status, boxes[5].status].all_equal_and_present?
-      return boxes[3].status
-    elsif [boxes[6].status, boxes[7].status, boxes[8].status].all_equal_and_present?
-      return boxes[6].status
-    elsif [boxes[0].status, boxes[3].status, boxes[6].status].all_equal_and_present?
-      return boxes[0].status
-    elsif [boxes[1].status, boxes[4].status, boxes[7].status].all_equal_and_present?
-      return boxes[1].status
-    elsif [boxes[2].status, boxes[5].status, boxes[8].status].all_equal_and_present?
-      return boxes[2].status
-    elsif [boxes[0].status, boxes[4].status, boxes[8].status].all_equal_and_present?
-      return boxes[0].status
-    elsif [boxes[2].status, boxes[4].status, boxes[6].status].all_equal_and_present?
-      return boxes[2].status
-    else
-      return nil
+    statuses = self.boxes.sort.collect { |box| box.status }
+    if [statuses[0], statuses[1], statuses[2]].all_equal_and_present?
+      return statuses[0]
+    elsif [statuses[3], statuses[4], statuses[5]].all_equal_and_present?
+      return statuses[3]
+    elsif [statuses[6], statuses[7], statuses[8]].all_equal_and_present?
+      return statuses[6]
+    elsif [statuses[0], statuses[3], statuses[6]].all_equal_and_present?
+      return statuses[0]
+    elsif [statuses[1], statuses[4], statuses[7]].all_equal_and_present?
+      return statuses[1]
+    elsif [statuses[2], statuses[5], statuses[8]].all_equal_and_present?
+      return statuses[2]
+    elsif [statuses[0], statuses[4], statuses[8]].all_equal_and_present?
+      return statuses[0]
+    elsif [statuses[2], statuses[4], statuses[6]].all_equal_and_present?
+      return statuses[2]
+    elsif statuses.exclude? nil
+      return "cats_game"
     end
   end
 
