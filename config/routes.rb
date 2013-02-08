@@ -1,4 +1,6 @@
 TicTacToe::Application.routes.draw do
+  root :to => 'Games#index'
+
   resources :boxes
   get '/boxes/:id/set_status/:status' => 'Boxes#set_status', :as => :set_status_box
 
